@@ -270,17 +270,33 @@ button:focus-visible {
   stroke-linecap: round;
   vector-effect: non-scaling-stroke;
 }
-.floral-divider .leaf path {
-  fill: var(--color-text-muted);
-  opacity: 0.5;
-}
-.floral-divider .petal {
+.floral-divider .leaf-outline {
   fill: none;
   stroke: var(--color-text-muted);
-  stroke-width: 1.3;
+  stroke-width: 1.1;
   vector-effect: non-scaling-stroke;
 }
-.floral-divider .flower-center {
+.floral-divider .leaf-vein {
+  fill: none;
+  stroke: var(--color-text-muted);
+  stroke-width: 0.6;
+  opacity: 0.7;
+  vector-effect: non-scaling-stroke;
+}
+.floral-divider .sun-core {
+  fill: none;
+  stroke: var(--color-border);
+  stroke-width: 1.4;
+  vector-effect: non-scaling-stroke;
+}
+.floral-divider .sun-ray-long,
+.floral-divider .sun-ray-short {
+  stroke: var(--color-text-muted);
+  stroke-width: 1;
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
+}
+.floral-divider .sun-dot {
   fill: var(--color-accent);
 }
 

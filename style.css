@@ -5,7 +5,7 @@
 
 :root {
   /* Colori */
-  --color-bg: #3a2444;
+  --color-bg: #251829;
   --color-surface: #141210;
   --color-surface-2: #1c1916;
   --color-text: #ede9e2;
@@ -82,7 +82,7 @@ button:focus-visible {
   transition: background-color 0.4s var(--ease), border-color 0.4s var(--ease);
 }
 .site-header.is-scrolled {
-  background: rgba(58, 36, 68, 0.85);
+  background: rgba(37, 24, 41, 0.85);
   backdrop-filter: blur(10px);
   border-bottom-color: var(--color-border);
 }
@@ -176,7 +176,7 @@ button:focus-visible {
 .hero-scrim {
   position: absolute; inset: 0;
   background:
-    linear-gradient(to top, rgba(58,36,68,0.95) 0%, rgba(58,36,68,0.25) 48%, rgba(58,36,68,0.35) 100%);
+    linear-gradient(to top, rgba(37,24,41,0.95) 0%, rgba(37,24,41,0.25) 48%, rgba(37,24,41,0.35) 100%);
 }
 
 .hero-content {
@@ -248,30 +248,39 @@ button:focus-visible {
   writing-mode: vertical-rl;
 }
 
-/* ---------- Sprocket divider (richiamo perforazione pellicola) ---------- */
-.sprocket-divider {
-  height: 34px;
-  background-image: repeating-linear-gradient(
-    to right,
-    var(--color-border) 0px, var(--color-border) 4px,
-    transparent 4px, transparent 22px
-  );
-  background-position: center;
-  background-repeat: repeat-x;
-  background-size: 22px 4px;
-  background-position-y: center;
-  position: relative;
+/* ---------- Floral divider (linea sinuosa, foglie e fiore centrale) ---------- */
+.floral-divider {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 1.5rem var(--gutter);
+  overflow: hidden; /* rete di sicurezza: nessuno scorrimento laterale */
 }
-.sprocket-divider::before,
-.sprocket-divider::after {
-  content: '';
-  position: absolute;
-  left: 0; right: 0;
-  height: 1px;
-  background: var(--color-border);
+.floral-divider svg {
+  display: block;
+  width: 100%;
+  height: auto;
 }
-.sprocket-divider::before { top: calc(50% - 9px); }
-.sprocket-divider::after { top: calc(50% + 9px); }
+.floral-divider .stem {
+  fill: none;
+  stroke: var(--color-border);
+  stroke-width: 1.4;
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
+}
+.floral-divider .leaf path {
+  fill: var(--color-text-muted);
+  opacity: 0.5;
+}
+.floral-divider .petal {
+  fill: none;
+  stroke: var(--color-text-muted);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+.floral-divider .flower-center {
+  fill: var(--color-accent);
+}
 
 /* ==========================================================================
    SEZIONI — intestazioni comuni
@@ -332,7 +341,7 @@ button:focus-visible {
   font-size: 0.78rem;
   letter-spacing: 0.03em;
   color: var(--color-text);
-  background: linear-gradient(to top, rgba(58,36,68,0.85), transparent);
+  background: linear-gradient(to top, rgba(37,24,41,0.85), transparent);
   opacity: 0;
   transform: translateY(8px);
   transition: opacity 0.4s var(--ease), transform 0.4s var(--ease);
@@ -342,6 +351,11 @@ button:focus-visible {
 @media (max-width: 900px) {
   .gallery-grid { column-count: 2; column-gap: 1rem; }
   .gallery-item { margin-bottom: 1rem; }
+}
+@media (max-width: 560px) {
+  .gallery-grid { column-count: 1; }
+  /* Su mobile la didascalia resta sempre leggibile, niente hover */
+  .item-caption { opacity: 1; transform: none; }
 }
 
 /* ==========================================================================

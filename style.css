@@ -1,19 +1,18 @@
 /* ==========================================================================
    ALE LANTO PHOTOGRAPHY — stylesheet
-   Palette "Vespa & Olivetti": nero caldo + azzurro polvere + giallo senape
+   Palette: viola scuro + rosso "luce di sicurezza"
    ========================================================================== */
 
 :root {
   /* Colori */
-  --color-bg: #0b0a09;
+  --color-bg: #3a2444;
   --color-surface: #141210;
   --color-surface-2: #1c1916;
   --color-text: #ede9e2;
   --color-text-muted: #948d80;
   --color-border: #2a2622;
-  --color-accent: #2d6e8e;      /* azzurro Vespa — accento primario (nero #0b0a09) */
-  --color-accent-dim: #1b4657;
-  --color-accent-2: #e8b23c;    /* giallo Olivetti — accento secondario */
+  --color-accent: #c1432a;      /* rosso "safelight" */
+  --color-accent-dim: #6e2c1e;
 
   /* Tipografia */
   --font-display: 'Fraunces', Georgia, serif;
@@ -83,7 +82,7 @@ button:focus-visible {
   transition: background-color 0.4s var(--ease), border-color 0.4s var(--ease);
 }
 .site-header.is-scrolled {
-  background: rgba(11, 10, 9, 0.85);
+  background: rgba(58, 36, 68, 0.85);
   backdrop-filter: blur(10px);
   border-bottom-color: var(--color-border);
 }
@@ -177,7 +176,7 @@ button:focus-visible {
 .hero-scrim {
   position: absolute; inset: 0;
   background:
-    linear-gradient(to top, rgba(11,10,9,0.95) 0%, rgba(11,10,9,0.25) 48%, rgba(11,10,9,0.35) 100%);
+    linear-gradient(to top, rgba(58,36,68,0.95) 0%, rgba(58,36,68,0.25) 48%, rgba(58,36,68,0.35) 100%);
 }
 
 .hero-content {
@@ -235,7 +234,7 @@ button:focus-visible {
   content: '';
   position: absolute;
   top: -100%; left: 0; right: 0; height: 100%;
-  background: var(--color-accent-2);
+  background: var(--color-accent);
   animation: cue-fall 2.2s ease-in-out infinite;
 }
 @keyframes cue-fall {
@@ -333,7 +332,7 @@ button:focus-visible {
   font-size: 0.78rem;
   letter-spacing: 0.03em;
   color: var(--color-text);
-  background: linear-gradient(to top, rgba(11,10,9,0.85), transparent);
+  background: linear-gradient(to top, rgba(58,36,68,0.85), transparent);
   opacity: 0;
   transform: translateY(8px);
   transition: opacity 0.4s var(--ease), transform 0.4s var(--ease);

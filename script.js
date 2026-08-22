@@ -118,7 +118,9 @@ document.addEventListener('DOMContentLoaded', () => {
     lightboxImage.src = img.src;
     lightboxImage.alt = img.alt || '';
     lightboxTitle.textContent = captionEl ? captionEl.textContent : '';
-    lightboxDescription.textContent = item.dataset.description || '';
+    // Nel testo di data-description, scrivi \n dove vuoi un a-capo:
+    // qui lo trasformiamo in un'interruzione di riga vera.
+    lightboxDescription.textContent = (item.dataset.description || '').replace(/\\n/g, '\n');
 
     // Stesso blocco-scroll robusto usato per il menu mobile.
     lightboxScrollPosition = window.scrollY;

@@ -96,9 +96,74 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
     revealItems.forEach(item => observer.observe(item));
-  } else {
-    // Fallback per browser senza supporto IntersectionObserver
-    revealItems.forEach(item => item.classList.add('is-visible'));
+  /* ---------- Lightbox galleria ---------- */
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImage = document.getElementById('lightboxImage');
+  const lightboxTitle = document.getElementById('lightboxTitle');
+  const lightboxDescription = document.getElementById('lightboxDescription');
+  const lightboxClose = document.getElementById('lightboxClose');
+  const galleryGrid = document.getElementById('galleryGrid');
+  let lightboxScrollPosition = 0;
+
+  const openLightbox = (item) => {
+    const img = item.querySelector('img');
+    const captionEl = item.querySelector('.item-caption');
+    if (!img) return;
+
+    lightboxImage.src = img.src;
+    lightboxImage.alt = img.alt || '';
+    lightboxTitle.textContent = captionEl ? captionEl.textContent : '';
+    lightboxDescription.textContent = item.dataset.description || '';
+
+    // Stesso blocco-scroll robusto usato per il menu mobile.
+    lightboxScrollPosition = window.scrollY;
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${lightboxScrollPosition}px`;
+    document.body.style.left = '0';
+    document.body.style.right = '0';
+
+    lightbox.classList.add('is-open');
+    lightbox.setAttribute('aria-hidden', 'false');
+    lightboxClose.focus();
+  };
+
+  const closeLightbox = () => {
+    lightbox.classList.remove('is-open');
+    lightbox.setAttribute('aria-hidden', 'true');
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.left = '';
+    document.body.style.right = '';
+    window.scrollTo({ top: lightboxScrollPosition, left: 0, behavior: 'instant' });
+  };
+
+  if (galleryGrid && lightbox) {
+    // Click su una foto (o su un elemento al suo interno) apre la lightbox.
+    galleryGrid.addEventListener('click', (event) => {
+      const item = event.target.closest('.gallery-item');
+      if (item) openLightbox(item);
+    });
+
+    // Supporto da tastiera: Invio o Spazio aprono la foto attualmente a fuoco.
+    galleryGrid.addEventListener('keydown', (event) => {
+      if (event.key !== 'Enter' && event.key !== ' ') return;
+      const item = event.target.closest('.gallery-item');
+      if (item) {
+        event.preventDefault();
+        openLightbox(item);
+      }
+    });
+
+    lightbox.addEventListener('click', (event) => {
+      if (event.target.hasAttribute('data-close')) closeLightbox();
+    });
+    lightboxClose.addEventListener('click', closeLightbox);
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && lightbox.classList.contains('is-open')) {
+        closeLightbox();
+      }
+    });
   }
 
 });

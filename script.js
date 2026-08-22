@@ -15,17 +15,39 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ---------- Menu mobile ---------- */
   const navToggle = document.getElementById('navToggle');
   const mainNav = document.getElementById('mainNav');
+  let scrollPosition = 0;
+
+  // Blocco dello scroll "robusto": su iOS Safari il solo overflow:hidden
+  // sul body non basta (il contenuto sottostante resta visibile e si
+  // muove sotto il menu). Fissiamo il body nella sua posizione esatta,
+  // così il menu a schermo intero copre davvero tutto, ovunque si fosse
+  // scrollato quando è stato aperto.
+  const openMenu = () => {
+    scrollPosition = window.scrollY;
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${scrollPosition}px`;
+    document.body.style.left = '0';
+    document.body.style.right = '0';
+    mainNav.classList.add('is-open');
+    navToggle.setAttribute('aria-expanded', 'true');
+  };
 
   const closeMenu = () => {
     mainNav.classList.remove('is-open');
     navToggle.setAttribute('aria-expanded', 'false');
-    document.body.style.overflow = '';
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.left = '';
+    document.body.style.right = '';
+    window.scrollTo(0, scrollPosition);
   };
 
   navToggle.addEventListener('click', () => {
-    const isOpen = mainNav.classList.toggle('is-open');
-    navToggle.setAttribute('aria-expanded', String(isOpen));
-    document.body.style.overflow = isOpen ? 'hidden' : '';
+    if (mainNav.classList.contains('is-open')) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
   });
 
   document.querySelectorAll('[data-nav]').forEach(link => {

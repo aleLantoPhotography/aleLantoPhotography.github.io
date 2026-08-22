@@ -597,6 +597,7 @@ button:focus-visible {
   line-height: 1.7;
   color: var(--color-text-muted);
   max-width: 60ch;
+  white-space: pre-line;
 }
 
 /* ==========================================================================

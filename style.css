@@ -5,13 +5,13 @@
 
 :root {
   /* Colori */
-  --color-bg: #0b0a09;
+  --color-bg: #2d6e8e;
   --color-surface: #141210;
   --color-surface-2: #1c1916;
   --color-text: #ede9e2;
   --color-text-muted: #948d80;
   --color-border: #2a2622;
-  --color-accent: #2d6e8e;      /* azzurro Vespa — accento primario */
+  --color-accent: #2d6e8e;      /* azzurro Vespa — accento primario (nero #0b0a09) */
   --color-accent-dim: #1b4657;
   --color-accent-2: #e8b23c;    /* giallo Olivetti — accento secondario */
 

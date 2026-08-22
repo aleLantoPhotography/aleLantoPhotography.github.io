@@ -96,6 +96,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
     revealItems.forEach(item => observer.observe(item));
+  } else {
+    // Fallback per browser senza supporto IntersectionObserver
+    revealItems.forEach(item => item.classList.add('is-visible'));
+  }
+
   /* ---------- Lightbox galleria ---------- */
   const lightbox = document.getElementById('lightbox');
   const lightboxImage = document.getElementById('lightboxImage');

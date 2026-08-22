@@ -1,6 +1,6 @@
 /* ==========================================================================
    ALE LANTO PHOTOGRAPHY — stylesheet
-   Palette "Op Art Milanese": nero caldo + viola melanzana + senape
+   Palette "Vespa & Olivetti": nero caldo + azzurro polvere + giallo senape
    ========================================================================== */
 
 :root {
@@ -11,9 +11,9 @@
   --color-text: #ede9e2;
   --color-text-muted: #948d80;
   --color-border: #2a2622;
-  --color-accent: #5c3a6e;      /* viola melanzana — accento primario */
-  --color-accent-dim: #3a2444;
-  --color-accent-2: #e3b23c;    /* senape — accento secondario, uso mirato */
+  --color-accent: #2d6e8e;      /* azzurro Vespa — accento primario */
+  --color-accent-dim: #1b4657;
+  --color-accent-2: #e8b23c;    /* giallo Olivetti — accento secondario */
 
   /* Tipografia */
   --font-display: 'Fraunces', Georgia, serif;
@@ -304,7 +304,6 @@ button:focus-visible {
 .gallery-grid {
   column-count: 3;
   column-gap: 1.5rem;
-  counter-reset: frame;
 }
 .gallery-item {
   break-inside: avoid;
@@ -327,27 +326,6 @@ button:focus-visible {
 }
 .gallery-item:hover img { transform: scale(1.045); filter: saturate(1) brightness(1); }
 
-.gallery-item::before {
-  counter-increment: frame;
-  content: "N." counter(frame, decimal-leading-zero);
-  position: absolute;
-  top: 0.8rem; left: 0.9rem;
-  z-index: 2;
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 0.78rem;
-  letter-spacing: 0.03em;
-  color: var(--color-text);
-  background: rgba(11, 10, 9, 0.55);
-  padding: 0.15rem 0.55rem;
-  border-bottom: 2px solid var(--color-accent-2);
-  backdrop-filter: blur(3px);
-  opacity: 0;
-  transform: translateY(-6px);
-  transition: opacity 0.4s var(--ease), transform 0.4s var(--ease);
-}
-.gallery-item:hover::before { opacity: 1; transform: translateY(0); }
-
 .item-caption {
   position: absolute;
   left: 0; right: 0; bottom: 0;
@@ -368,8 +346,8 @@ button:focus-visible {
 }
 @media (max-width: 560px) {
   .gallery-grid { column-count: 1; }
-  /* Su mobile le didascalie restano sempre leggibili, niente hover */
-  .item-caption, .gallery-item::before { opacity: 1; transform: none; }
+  /* Su mobile la didascalia resta sempre leggibile, niente hover */
+  .item-caption { opacity: 1; transform: none; }
 }
 
 /* ==========================================================================

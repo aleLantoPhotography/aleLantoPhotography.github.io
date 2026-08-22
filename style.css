@@ -492,18 +492,12 @@ button:focus-visible {
 .footer-copy {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 0 var(--gutter) 0.4rem;
+  padding: 0 var(--gutter) 2rem;
   font-size: 0.72rem;
   color: var(--color-text-muted);
   border-top: 1px solid var(--color-border);
   padding-top: 1.5rem;
-}
-.footer-location {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: 0 var(--gutter) 2rem;
-  font-size: 0.72rem;
-  color: var(--color-text-muted);
+  line-height: 1.6;
 }
 
 /* ==========================================================================

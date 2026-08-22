@@ -499,12 +499,9 @@ button:focus-visible {
 @media (max-width: 720px) {
   .nav-toggle { display: block; }
 
-  .main-nav {
+ .main-nav {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100svh;
+  inset: 0;
   z-index: 150;
   background: var(--color-bg);
 }

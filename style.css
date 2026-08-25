@@ -252,13 +252,29 @@ button:focus-visible {
 
 /* ---------- Floral divider (linea sinuosa, foglie e fiore centrale) ---------- */
 .floral-divider {
+  position: relative;
   width: 100%;
   max-width: var(--max-width);
   margin: 0 auto;
   padding: 1.5rem var(--gutter);
   overflow: hidden; /* rete di sicurezza: nessuno scorrimento laterale */
 }
+.floral-divider--shadow::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: radial-gradient(
+    ellipse 60% 65% at 50% 50%,
+    rgba(0, 0, 0, 0.32) 0%,
+    rgba(0, 0, 0, 0.14) 45%,
+    transparent 75%
+  );
+  pointer-events: none;
+}
 .floral-divider svg {
+  position: relative;
+  z-index: 1;
   display: block;
   width: 100%;
   height: auto;
